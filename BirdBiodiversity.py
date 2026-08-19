@@ -34,6 +34,25 @@ def frequently2(birds):
 
 
 
+def distince(birds):
+     birds.boxplot(
+         column='MinBodyMass',
+         by='Category',
+         figsize=(10, 6)
+     )
+
+     plt.title('Minimum Body Mass Category!')
+     plt.suptitle('')
+     plt.xlabel('Category')
+     plt.ylabel('Body Mass')
+     plt.xticks(rotation=45)
+     plt.tight_layout()
+
+     plt.show()
+
+
+
+
 path = 'data/birds.csv'
 
 birds = pd.read_csv(path)
@@ -47,4 +66,5 @@ birds = pd.read_csv(path)
 
 
 #most_observed(birds)
-frequently(birds)
+#frequently(birds)
+distince(birds)
