@@ -35,20 +35,31 @@ def frequently2(birds):
 
 
 def distince(birds):
-     birds.boxplot(
-         column='MinBodyMass',
-         by='Category',
-         figsize=(10, 6)
-     )
+    D1 = birds.groupby('Category')[['MinBodyMass', 'MaxBodyMass']].mean()
+    D2 = birds.groupby('Category')[['MinWingspan', 'MaxWingspan']].mean()
 
-     plt.title('Minimum Body Mass Category!')
-     plt.suptitle('')
-     plt.xlabel('Category')
-     plt.ylabel('Body Mass')
-     plt.xticks(rotation=45)
-     plt.tight_layout()
 
-     plt.show()
+    D1.plot(
+        kind='bar',
+        figsize=(12, 12)
+    )
+
+
+    D2.plot(
+        kind='bar',
+        figsize=(12, 12)
+    )
+
+
+
+
+    plt.title('Physical Characteristics by Bird Category')
+    plt.suptitle('')
+    plt.xlabel('Category')
+    plt.ylabel('Average Value')
+    plt.tight_layout()
+
+    plt.show()
 
 
 
@@ -68,3 +79,4 @@ birds = pd.read_csv(path)
 #most_observed(birds)
 #frequently(birds)
 distince(birds)
+
