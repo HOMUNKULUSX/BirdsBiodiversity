@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+
 def most_observed(birds):
     plt.xlabel('Categories')
     plt.ylabel('Count')
@@ -63,6 +64,20 @@ def distince(birds):
 
 
 
+def relation(birds):
+    counter = birds['Category'].value_counts().head(5).index
+    limit = birds[birds['Category'].isin(counter)]
+    
+    sns.scatterplot(
+        x='MinWingspan',
+        y='MinBodyMass',
+        hue='Category',
+        data=limit
+    )
+    
+
+    plt.show()
+
 
 path = 'data/birds.csv'
 
@@ -78,5 +93,6 @@ birds = pd.read_csv(path)
 
 #most_observed(birds)
 #frequently(birds)
-distince(birds)
+#distince(birds)
+relation(birds)
 
