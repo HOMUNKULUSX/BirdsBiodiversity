@@ -11,26 +11,34 @@ def most_observed(birds):
     count = birds['Category'].value_counts()
     count.plot(kind='bar', figsize=(12, 6))
 
-    plt.show()
+    plt.savefig(
+        'figures/observe.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
 
 
-def frequently(birds):
+def distribution(birds):
     birds['AverageMass'] = ((birds['MinBodyMass'] + birds['MaxBodyMass']) / 2)
     birds['AverageWingspan'] = ((birds['MinWingspan'] + birds['MaxWingspan']) / 2)
 
     x = birds['AverageMass']
     y = birds['AverageWingspan']
 
-    frequently2(birds)
+    distribution2(birds)
     
 
 
 
-def frequently2(birds):
+def distribution2(birds):
     birds['AverageMass'].plot(kind='hist', bins=10, figsize=(12, 12))
     birds['AverageWingspan'].plot(kind='hist', bins=10, figsize=(12, 12))
 
-    plt.show()
+    plt.savefig(
+        'figures/distribution.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
 
 
 
@@ -60,7 +68,11 @@ def distince(birds):
     plt.ylabel('Average Value')
     plt.tight_layout()
 
-    plt.show()
+    plt.savefig(
+        'figures/distinces.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
 
 
 
@@ -82,6 +94,7 @@ def relation(birds):
 
     plt.show()
 
+
 def relation2(birds):
 
     corr = birds[
@@ -100,7 +113,11 @@ def relation2(birds):
 
     plt.title("Correlation Between Bird Physical Characteristics")
 
-    plt.show()
+    plt.savefig(
+        'figures/relation.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
 
 
 path = 'data/birds.csv'
@@ -116,8 +133,8 @@ birds = pd.read_csv(path)
 
 
 #most_observed(birds)
-#frequently(birds)
+#distribution(birds)
 #distince(birds)
-#relation(birds)
-relation2(birds)
+relation(birds)
+#relation2(birds)
 
