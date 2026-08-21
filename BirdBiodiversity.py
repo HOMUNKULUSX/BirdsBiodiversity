@@ -65,6 +65,10 @@ def distince(birds):
 
 
 def relation(birds):
+    """
+    Based on most repeated categories
+    """
+
     counter = birds['Category'].value_counts().head(5).index
     limit = birds[birds['Category'].isin(counter)]
     
@@ -75,6 +79,26 @@ def relation(birds):
         data=limit
     )
     
+
+    plt.show()
+
+def relation2(birds):
+
+    corr = birds[
+        ["MinBodyMass",
+        "MinWingspan"]
+    ].corr()
+
+    plt.figure(figsize=(10, 7))
+
+    sns.heatmap(
+        corr,
+        annot=True,
+        cmap='coolwarm',
+        fmt='0.2f'
+    )
+
+    plt.title("Correlation Between Bird Physical Characteristics")
 
     plt.show()
 
@@ -94,5 +118,6 @@ birds = pd.read_csv(path)
 #most_observed(birds)
 #frequently(birds)
 #distince(birds)
-relation(birds)
+#relation(birds)
+relation2(birds)
 
