@@ -92,7 +92,11 @@ def relation(birds):
     )
     
 
-    plt.show()
+    plt.savefig(
+        'figures/relation_base_category.png',
+        dpi=300,
+        bbox_inches='tight'
+    )
 
 
 def relation2(birds):
@@ -126,15 +130,15 @@ birds = pd.read_csv(path)
 
 
 # File Checking
-#print('Birds shape: \n',birds.shape)
-#print('Birds head: \n',birds.head())
-#print('Birds info: \n' ,birds.info())
-#print('Birds unique: \n',birds.nunique())
+print('Birds shape: \n',birds.shape)
+print('Birds head: \n',birds.head())
+print('Birds info: \n' ,birds.info())
+print('Birds unique: \n',birds.nunique())
 
 
-#most_observed(birds)
-#distribution(birds)
-#distince(birds)
+most_observed(birds)
+distribution(birds)
+distince(birds)
 relation(birds)
-#relation2(birds)
+relation2(birds)
 
